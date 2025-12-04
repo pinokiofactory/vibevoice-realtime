@@ -9,7 +9,7 @@ module.exports = {
         path: "{{args && args.path ? args.path : '.'}}",
         message: [
           "uv pip install numpy==1.26.4",
-          "uv pip install pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128"
+          "uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128"
         ]
       }
     },
@@ -61,7 +61,7 @@ module.exports = {
         path: "{{args && args.path ? args.path : '.'}}",
         message: [
           "uv pip install numpy==1.26.4",
-          "uv pip install pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128"
+          "uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128"
         ]
       }
     },
