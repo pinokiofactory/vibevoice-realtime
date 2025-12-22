@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  version: "2.0",
+  version: "5.0",
   title: "VibeVoice Realtime",
   description: "Realtime streaming TTS demo using microsoft/VibeVoice-Realtime-0.5B",
   icon: "icon.png",
