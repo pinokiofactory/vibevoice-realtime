@@ -1,11 +1,14 @@
 module.exports = {
+  requires: {
+    bundle: "ai"
+  },
   run: [
     {
       when: "{{!exists('app')}}",
       method: "shell.run",
       params: {
         message: [
-          "git clone https://github.com/microsoft/VibeVoice app"
+          "git clone --revision=e73d1e17c3754f046352014856a922f8208fb5d3 https://github.com/microsoft/VibeVoice app"
         ]
       }
     },
@@ -39,4 +42,3 @@ module.exports = {
     }
   ]
 }
-

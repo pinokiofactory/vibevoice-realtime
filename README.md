@@ -2,11 +2,11 @@
 
 This Pinokio launcher installs and runs the realtime VibeVoice TTS demo from [microsoft/VibeVoice](https://github.com/microsoft/VibeVoice), configured to use the [microsoft/VibeVoice-Realtime-0.5B](https://huggingface.co/microsoft/VibeVoice-Realtime-0.5B) model.
 
-The app starts the official `demo/vibevoice_realtime_demo.py` websocket server and exposes its web UI through Pinokio.
+The app starts the official FastAPI web demo from `demo.web.app` and exposes its web UI through Pinokio.
 
 ## What this app does
 
-- Clones the official VibeVoice repository into the local `app/` folder
+- Clones the official VibeVoice repository at the known-compatible `e73d1e1` revision into the local `app/` folder
 - Creates an isolated Python environment and installs `vibevoice` with `uv pip install -e .`
 - Downloads the `microsoft/VibeVoice-Realtime-0.5B` model with Hugging Face
 - Launches the realtime websocket demo server and web UI
@@ -15,15 +15,15 @@ The app starts the official `demo/vibevoice_realtime_demo.py` websocket server a
 
 1. Open this project in Pinokio.
 2. Click **Install**.
-   - This clones `microsoft/VibeVoice` into `app/`, creates an `env` virtual environment, installs dependencies, and downloads the realtime model weights.
+   - This clones the pinned `microsoft/VibeVoice` revision into `app/`, creates an `env` virtual environment, installs dependencies, and downloads the realtime model weights.
 3. After installation completes, click **Start**.
    - The launcher runs:
      ```bash
-     python demo/vibevoice_realtime_demo.py \
-       --model_path models/VibeVoice-Realtime-0.5B \
+     python -m uvicorn demo.web.app:app \
+       --host 127.0.0.1 \
        --port <AUTO_PORT>
      ```
-   - The server binds to `0.0.0.0` on an automatically selected free port.
+   - The server binds to `127.0.0.1` on an automatically selected free port.
 4. Once the server prints an `http://...` URL, Pinokio captures it and shows an **Open Web UI** tab.
 
 ### URLs
@@ -36,6 +36,8 @@ When running locally, you can access the UI via:
 Pinokio automatically uses the captured URL for the **Open Web UI** menu item.
 
 > Note: The realtime model is designed for GPU inference (CUDA or Apple Silicon). CPU-only performance may be poor or unsupported.
+
+> Security note: This launcher is pinned before VibeVoice's currently broken preset-loader hardening. Use only the bundled voice presets or other `.pt` presets from sources you trust. The **Update** action refreshes the launcher and dependencies without advancing the pinned VibeVoice source revision.
 
 ## Programmatic API
 
@@ -149,4 +151,3 @@ curl "$BASE_URL/config"
 ```
 
 This is useful to confirm that the server is running and the model has loaded correctly.
-

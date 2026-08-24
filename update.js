@@ -8,14 +8,6 @@ module.exports = {
       }
     },
     {
-      when: "{{exists('app/.git')}}",
-      method: "shell.run",
-      params: {
-        path: "app",
-        message: "git pull"
-      }
-    },
-    {
       when: "{{exists('app')}}",
       method: "script.start",
       params: {
@@ -48,4 +40,3 @@ module.exports = {
     }
   ]
 }
-
