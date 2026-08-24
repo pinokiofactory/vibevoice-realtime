@@ -16,6 +16,7 @@ The app starts the official FastAPI web demo from `demo.web.app` and exposes its
 1. Open this project in Pinokio.
 2. Click **Install**.
    - This clones the pinned `microsoft/VibeVoice` revision into `app/`, creates an `env` virtual environment, installs dependencies, and downloads the realtime model weights.
+   - For an existing installation created before the pin was added, click **Update**. It fetches the repository and moves the existing checkout to the same pinned revision before refreshing dependencies.
 3. After installation completes, click **Start**.
    - The launcher runs:
      ```bash
@@ -37,7 +38,7 @@ Pinokio automatically uses the captured URL for the **Open Web UI** menu item.
 
 > Note: The realtime model is designed for GPU inference (CUDA or Apple Silicon). CPU-only performance may be poor or unsupported.
 
-> Security note: This launcher is pinned before VibeVoice's currently broken preset-loader hardening. Use only the bundled voice presets or other `.pt` presets from sources you trust. The **Update** action refreshes the launcher and dependencies without advancing the pinned VibeVoice source revision.
+> Security note: This launcher is pinned before VibeVoice's currently broken preset-loader hardening. Use only the bundled voice presets or other `.pt` presets from sources you trust. The **Update** action re-applies the pinned VibeVoice revision before refreshing dependencies.
 
 ## Programmatic API
 

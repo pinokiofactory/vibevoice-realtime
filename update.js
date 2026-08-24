@@ -8,6 +8,17 @@ module.exports = {
       }
     },
     {
+      when: "{{exists('app/.git')}}",
+      method: "shell.run",
+      params: {
+        path: "app",
+        message: [
+          "git fetch origin",
+          "git checkout e73d1e17c3754f046352014856a922f8208fb5d3"
+        ]
+      }
+    },
+    {
       when: "{{exists('app')}}",
       method: "script.start",
       params: {
